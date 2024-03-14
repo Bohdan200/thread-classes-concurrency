@@ -14,7 +14,7 @@ public class ProgramTimingTests {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             String command = scanner.nextLine();
 
             switch (command) {
@@ -38,7 +38,7 @@ public class ProgramTimingTests {
                     System.out.println("The program has finished its execution!");
                     threadOne.interrupt();
                     threadSecond.interrupt();
-                    System.exit(1);
+                    Thread.currentThread().interrupt();
                     break;
 
                 default:  System.out.println("Invalid command, only the following commands are recognized: 'start' (to initiate), 'w' (to wait), 'n' (to continue), and '0' (to exit).");
